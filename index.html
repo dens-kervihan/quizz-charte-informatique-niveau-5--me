@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Informatique - 5ème</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #eef2f5; margin: 0; padding: 20px; text-align: center; }
+    .card { background: white; max-width: 600px; margin: auto; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h1 { color: #2c3e50; font-size: 22px; }
+    .question { text-align: left; margin: 20px 0; }
+    label { display: block; margin: 8px 0; cursor: pointer; }
+    button { background: #3498db; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+    #result { margin-top: 15px; font-weight: bold; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Quiz de rentrée — Niveau 5ème</h1>
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Quel composant stocke les données de manière permanente ?</strong></p>
+        <label><input type="radio" name="q1" value="0"> La mémoire RAM</label>
+        <label><input type="radio" name="q1" value="1"> Le disque dur / SSD</label>
+        <label><input type="radio" name="q1" value="0"> Le processeur</label>
+      </div>
+      <div class="question">
+        <p><strong>2. Quel réseau permet de connecter les ordinateurs du collège entre eux ?</strong></p>
+        <label><input type="radio" name="q2" value="1"> Le réseau local (LAN)</label>
+        <label><input type="radio" name="q2" value="0"> Le réseau 4G/5G</label>
+        <label><input type="radio" name="q2" value="0"> Le Bluetooth</label>
+      </div>
+      <button type="button" onclick="checkQuiz()">Valider</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkQuiz() {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      if(!q1 || !q2) { alert('Réponds à toutes les questions !'); return; }
+      let score = parseInt(q1.value) + parseInt(q2.value);
+      document.getElementById('result').innerText = `Score : ${score} / 2`;
+      document.getElementById('result').style.color = score === 2 ? 'green' : 'orange';
+    }
+  </script>
+</body>
+</html>
